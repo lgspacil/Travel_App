@@ -1,0 +1,59 @@
+{{user_obj|json}}
+<form class="form-horizontal" #logForm='ngForm'>
+    <a style="text-align:right;float:right;" [routerLink]="['/register']">Not A User, Register Here!</a>
+    <fieldset>
+      <legend>Login</legend>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-1 control-label">Email</label>
+        <div class="col-lg-10">
+          <input 
+          type="text" 
+          class="form-control" 
+          name="email" 
+          placeholder="Email" 
+          required 
+          minlength="6" 
+          [(ngModel)]="user_obj.email" 
+          #email="ngModel">
+        </div>
+      </div>
+
+      <div class="red" *ngIf='email.errors && (email.touched)'>
+        <p *ngIf='email.errors.required'>Email is required</p>
+        <p *ngIf='email.errors.minlength'>Email must contain at least 6 characters.</p>
+      </div>
+
+
+      <div class="form-group">
+        <label for="inputPassword" class="col-lg-1 control-label">Password</label>
+        <div class="col-lg-10">
+          <input 
+          type="password" 
+          class="form-control" 
+          name="password" 
+          placeholder="Password" 
+          required
+          minlength="4"
+          [(ngModel)]="user_obj.password"
+          #password="ngModel">
+        </div>
+      </div>
+
+      <div class="red" *ngIf='password.errors && (password.touched)'>
+        <p *ngIf='password.errors.required'>Password is required</p>
+        <p *ngIf='password.errors.minlength'>Password must be at least 4 characters.</p>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="reset" class="btn btn-default">Cancel</button>
+          <button [disabled]="!logForm.valid" type="submit" class="btn btn-primary" (click)="userLogin()">Submit</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+
+  <div *ngIf="error">
+    <p class="red">{{error}}</p>
+  </div>

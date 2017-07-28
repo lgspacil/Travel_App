@@ -1,0 +1,74 @@
+{{updateMarker|json}}
+<div class="add_info">
+  <button class="btn btn-danger btn-xs" (click)="closeAddInfoPage()">X</button>
+  <form class="form-horizontal">
+    <fieldset>
+      <legend>Add Info to Location</legend>
+      <div class="form-group">
+        <label for="location_name" class="col-lg-2 control-label">Location Name</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" placeholder="Paris" name="location_name" [(ngModel)]="updateMarker.location_name">
+        </div>
+      </div>
+      
+
+      <div class="form-group">
+        <label for="textArea" class="col-lg-2 control-label">A bit about this location..</label>
+        <div class="col-lg-10">
+          <textarea class="form-control" rows="3" id="textArea" placeholder="I loved this place! It had the best food!" name="content" [(ngModel)]="updateMarker.content"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price" class="col-lg-2 control-label">Price</label>
+        <div class="col-lg-10">
+          <input type="number" class="form-control" placeholder=0 name="price" [(ngModel)]="updateMarker.price">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="select" class="col-lg-2 control-label">Marker Image</label>
+        <div class="col-lg-10">
+          <select class="form-control" name="img_url" [(ngModel)]="updateMarker.img_url">
+            <option value="https://maps.google.ca/intl/en_ca/mapfiles/icon_green.png">General Point</option>
+            <option value="http://i.imgur.com/0ZTQbec.png">Airport</option>
+            <option value="http://i.imgur.com/0GWhwn8.png">Camping</option>
+            <option value="http://i.imgur.com/E23PQjk.png">Cool Spot!</option>
+            <option value="http://i.imgur.com/3JcS82f.png">Food</option>
+            <option value="http://i.imgur.com/D28Bgeb.png">Gas Station</option>
+            <option value="http://i.imgur.com/1xY4O6T.png">Grocery Store</option>
+            <option value="http://i.imgur.com/jH6JLrm.png">Hiking</option>
+            <option value="http://i.imgur.com/Hkg6fMA.png">Hotel</option>
+            <option value="http://i.imgur.com/fNFwJwJ.png">Night Life</option>
+            <option value="http://i.imgur.com/VAZu2wT.png">Shopping</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="images" class="col-lg-2 control-label">Image Upload</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" placeholder="enter photo url here" name="images" [(ngModel)]="updateMarker.images[0]">
+          <input type="text" class="form-control" placeholder="enter photo url here" name="images" [(ngModel)]="updateMarker.images[1]">
+          <input type="text" class="form-control" placeholder="enter photo url here" name="images" [(ngModel)]="updateMarker.images[2]">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="day_number" class="col-lg-2 control-label">Day Number</label>
+        <div class="col-lg-10">
+          <input type="number" class="form-control" placeholder=0 name="day_number" [(ngModel)]="updateMarker.day_number">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="submit" class="btn btn-primary" (click)="submitUpdatedChanges()">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+</div>

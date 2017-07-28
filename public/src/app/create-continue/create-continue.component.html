@@ -1,0 +1,26 @@
+<h1>Welcome {{name}}</h1>
+<p>user id: {{user_id}}</p>
+<p>new_trip_obj: {{new_trip_obj | json}}</p>
+
+<p>TRIP ARRAY: {{selected_users_trips | json}}</p>
+
+<div class="jumbotron">
+  <h1>New Trip?</h1>
+  <form>
+    <input type="text" name="trip_name" [(ngModel)]="new_trip_obj.trip_name">
+  </form>
+  <p>
+    <a class="btn btn-lg btn-primary" role="button" (click)="addedNewTrip()">Lets GO! &raquo;</a>
+  </p>
+</div>
+
+ <div *ngIf="error">
+    <p class="red">{{error}}</p>
+  </div>
+
+<div class="jumbotron">
+  <h1>Continue Trip:</h1>
+  <p *ngFor="let trip of selected_users_trips">
+    <a class="btn btn-lg btn-primary" role="button" (click)="continueTrip(trip._id)">{{trip.trip_name}} &raquo;</a>
+  </p>
+</div>

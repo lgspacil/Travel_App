@@ -1,0 +1,11 @@
+agm-map {
+  height: 400px;
+}
+
+#trip_name{
+  text-align: center;
+}
+
+#maker_location_name{
+  color: brown;
+}

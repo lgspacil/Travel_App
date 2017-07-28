@@ -1,0 +1,97 @@
+{{user_obj|json}}
+<div class="reg_wrapper">  
+  <form class="form-horizontal" #regForm='ngForm'>
+    <a style="text-align:right;float:right;" [routerLink]="['/login']">Login Here!</a>
+    <fieldset>
+      <legend>Register</legend>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-1 control-label">Email</label>
+        <div class="col-lg-10">
+          <input 
+          type="text" 
+          class="form-control" 
+          name="email" 
+          required
+          minlength="6" 
+          placeholder="Email" 
+          [(ngModel)]="user_obj.email"
+          #email = 'ngModel'>
+        </div>
+      </div>
+
+      <div class="red" *ngIf='email.errors && (email.touched)'>
+        <p *ngIf='email.errors.required'>Email is required</p>
+        <p *ngIf='email.errors.minlength'>Email must contain at least 6 characters.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-1 control-label">User Name</label>
+        <div class="col-lg-10">
+          <input type="text" 
+          class="form-control" 
+          name="username" 
+          placeholder="Username" 
+          required
+          minlength="3"
+          [(ngModel)]="user_obj.username"
+          #username='ngModel'>
+        </div>
+      </div>
+
+      <div class="red" *ngIf='username.errors && (username.touched)'>
+        <p *ngIf='username.errors.required'>Username is required</p>
+        <p *ngIf='username.errors.minlength'>username must contain at least 3 characters.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="inputPassword" class="col-lg-1 control-label">Password</label>
+        <div class="col-lg-10">
+          <input 
+          type="password" 
+          class="form-control" 
+          name="password" 
+          placeholder="Password" 
+          required
+          minlength="4"
+          [(ngModel)]="user_obj.password"
+          #password='ngModel'>
+        </div>
+      </div>
+
+      <div class="red" *ngIf='password.errors && (password.touched)'>
+        <p *ngIf='password.errors.required'>Password is required</p>
+        <p *ngIf='password.errors.minlength'>Password must contain at least 4 characters.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="inputPassword" class="col-lg-1 control-label">Confirm Password</label>
+        <div class="col-lg-10">
+          <input type="password" 
+          class="form-control" 
+          name="confirm_password" 
+          placeholder="Confirm Password"
+          required 
+          minlength="4"
+          [(ngModel)]="user_obj.confirm_password"
+          #confirm_password="ngModel">
+        </div>
+      </div>
+
+       <div class="red" *ngIf='user_obj.confirm_password != user_obj.password && (confirm_password.touched)'>
+        <p>The passwords do not match!</p>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="reset" class="btn btn-default">Cancel</button>
+          <button [disabled]="!regForm.valid || user_obj.confirm_password != user_obj.password"  type="submit" class="btn btn-primary" (click)="registerUser()">Submit</button>
+        </div>
+      </div>
+
+
+      <div *ngIf="errors">
+        <p class="red">{{errors}}</p>
+      </div>
+
+    </fieldset>
+  </form>
