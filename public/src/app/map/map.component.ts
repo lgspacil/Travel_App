@@ -69,7 +69,7 @@ export class MapComponent implements OnInit {
     this._httpService.loadSpecificMarkers(this.trip_user_obj)
 
     .then((data) =>{
-      console.log("Success loading markers got back this###########", data);
+      // console.log("Success loading markers got back this###########", data);
 
       this.markers = [];
       this.display_obj = {
@@ -78,7 +78,7 @@ export class MapComponent implements OnInit {
         trip_id: this.trip_id
       }
 
-      console.log("entering the for loop");
+      // console.log("entering the for loop");
       
       for(var i = 0; i < data._locations.length; i++){
         let newMarker = {'location_name': data._locations[i].location_name,
@@ -92,7 +92,9 @@ export class MapComponent implements OnInit {
                              'img_url': data._locations[i].img_url,
                              'day_number': data._locations[i].day_number,
                              '_user': data._locations[i]._user,
-                             '_trip': data._locations[i]._trip
+                             '_trip': data._locations[i]._trip,
+                             'weather': data._locations[i].weather
+                
         }
         this.markers.push(newMarker);
 
@@ -115,11 +117,11 @@ export class MapComponent implements OnInit {
       }
       
       //add the updated informatino about the current days and money count to the DB:
-      console.log("about to enter updateTripInfo... in loadSpecificMarkers:");
+      // console.log("about to enter updateTripInfo... in loadSpecificMarkers:");
       
       this._httpService.updateTripInfo(this.display_obj)
         .then((data) =>{
-          console.log("awesome this new feature worked")
+          // console.log("awesome this new feature worked")
         })
         .catch((err) =>{
            console.log("unable to update users money and day count")
@@ -134,7 +136,7 @@ export class MapComponent implements OnInit {
   mapCLicked($event:any){
 
     if (this.user_id == this.the_trips_user_id){
-      console.log("a new marker was added when the screen was clicked: ", event);
+      // console.log("a new marker was added when the screen was clicked: ", event);
 
       var newMarker = {
         location_name: '',
@@ -156,7 +158,7 @@ export class MapComponent implements OnInit {
         .then((data) =>{
           if (data != null){
             this.markers.push(data);
-            console.log("pushed this location to the markers array: ", data)
+            // console.log("pushed this location to the markers array: ", data)
 
             // moving the map to the location that was just added
             this.latitude = this.markers[this.markers.length -1].latitude;
@@ -171,18 +173,18 @@ export class MapComponent implements OnInit {
   }
 
   clickedMarker(marker, index:number){
-    console.log('Clicked Marker:' +marker.name+ ' at index '+ index);
+    // console.log('Clicked Marker:' +marker.name+ ' at index '+ index);
   }
 
   // removing the marker
   removeMarker(marker){
-    console.log("removing marker.... at the id of: ", marker._id)
+    // console.log("removing marker.... at the id of: ", marker._id)
     this._httpService.removeMarker(marker)
       .then((data) =>{
         //if successful removal then I need to update the users location
         this._httpService.updateTripsLocations(marker)
           .then((data) =>{
-            console.log("I think this means that I was able to remove one of the locations after updating the locaions array, ", data)
+            // console.log("I think this means that I was able to remove one of the locations after updating the locaions array, ", data)
             this.loadSpecificMarkers();
           })
           .catch((err) =>{
@@ -200,7 +202,7 @@ export class MapComponent implements OnInit {
     
     this._httpService.getLocationName(this.markerName)
     .then((data) =>{
-      console.log("this is the data that came back: ", data.results[0].geometry.location)
+      // console.log("this is the data that came back: ", data.results[0].geometry.location)
 
       this.markerLat = data.results[0].geometry.location.lat
       this.markerLng = data.results[0].geometry.location.lng
@@ -218,14 +220,14 @@ export class MapComponent implements OnInit {
         _trip: this.trip_id
       }
 
-      console.log("the new marker made by the search bar is: ", newMarker)
+      // console.log("the new marker made by the search bar is: ", newMarker)
 
       //add this location to the DB
       this._httpService.addLocationToDB(newMarker)
         .then((data) =>{
           if (data != null){
             this.markers.push(data);
-            console.log("pushed this location to the markers array, ", data)
+            // console.log("pushed this location to the markers array, ", data)
 
             //moving the map to the location that was just added
             this.latitude = this.markers[this.markers.length -1].latitude;
@@ -257,16 +259,17 @@ export class MapComponent implements OnInit {
     this.info_page = true;
     this.add_info_page = false;
 
+    // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@", marker_info)
     this.info_for_child_to_display = marker_info;
   }
 
   getTripNameAndUserIdFromTripId(){
-    console.log("hey I am getting the trip name");
+    // console.log("hey I am getting the trip name");
     
     this._httpService.getTripNameAndUserIdFromTripId(this.trip_id)
 
     .then((data) =>{
-      console.log("the trip name is: ", data.trip_name, "and the trips user_id is: ", data._user_id)
+      // console.log("the trip name is: ", data.trip_name, "and the trips user_id is: ", data._user_id)
       this.trip_name = data.trip_name;
       this.the_trips_user_id = data._user_id;
 

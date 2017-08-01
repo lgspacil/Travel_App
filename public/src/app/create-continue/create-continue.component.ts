@@ -14,7 +14,7 @@ export class CreateContinueComponent implements OnInit {
   name = this._cookieService.get('user_name');
   user_id = this._cookieService.get('user_id');
 
-  selected_users_trips = null;
+  selected_users_trips = [];
 
   new_trip_obj = {
     trip_name: "",
@@ -71,6 +71,20 @@ export class CreateContinueComponent implements OnInit {
     this._cookieService.put('trip_id', trip_id);
     this._router.navigate(['/map']);
 
+  }
+
+
+  // removing the trip
+  deleteTrip(trip_id){
+    console.log("removing trip.... at the id of: ", trip_id)
+    this._httpService.deleteTrip(trip_id)
+      .then((data) =>{
+        this.loadTrips();
+      })
+      .catch((err) =>{
+        console.log("unable to delete the trip");  
+      })
+    
   }
 
 }

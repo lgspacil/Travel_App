@@ -19,7 +19,9 @@ var UserSchema = new mongoose.Schema({
     username: {type: String},
     password: {type: String},
     confirm_password: {type: String},
-    _trip_id: [{type: Schema.Types.ObjectId, ref:'Trip'}]
+    _trip_id: [{type: Schema.Types.ObjectId, ref:'Trip'}],
+    direct_message_inbox: [{type: String}],
+    direct_message_outbox: [{type: String}]
 })
 
 var TripSchema = new mongoose.Schema({
@@ -46,7 +48,13 @@ var LocationSchema = new mongoose.Schema({
     price: {type: Number},
     images: [{type: String}],
     day_number: {type: Number},
+    weather: {type: Number}
 }, {timestamps: true});
+
+// var DirectMesssage = new mongoose.Schema({
+//     _user: {type: Schema.Types.ObjectId, ref:"User"},
+//     content: [{type: String}]
+// })
 
 
 mongoose.model('Location', LocationSchema);
@@ -190,11 +198,13 @@ app.post("/getTripNameAndUserId", function(req, res){
 })
 
 app.post('/update_marker', function(req, res){
+    console.log("updating the locations with this info< look at me!:", req.body)
     Location.update({_id: req.body._id},{$set: {"content":req.body.content,
                                                 "location_name":req.body.location_name,
                                                 "price": req.body.price,
                                                 "img_url":req.body.img_url,
                                                 "day_number":req.body.day_number,
+                                                "weather":req.body.weather,
                                                 "images":req.body.images}}, function(err, result){
         if(err){console.log("there was an error when updating")}
         else{res.json(result);}
@@ -208,9 +218,43 @@ app.get('/loadAllTrips', function(req, res){
     })
 })
 
-//Socket stuff------------------------------------------>
+app.get('/loadAllUsers', function(req, res){
+    User.find({}, function(err, result){
+        if(err){console.log("there was an error getting user data")}
+        else{res.json(result)}
+    })
+})
 
-//end of socket stuff --------------------------------------->
+app.post('/messageSent', function(req, res){
+    console.log("I am sending the message: ", req.body);
+    User.update({_id: req.body.yourFriendsId}, {$set: {"direct_message_inbox": req.body.inbox}}, function(err, result){
+        if(err){console.log("there was an error adding the new message to the outbox")}
+        else{res.json(result);}
+    })
+})
+
+app.post('/load_your_inbox', function(req, res){
+    User.findOne({_id: req.body.your_id}, function(err, result){
+        if(err){console.log("there was an error adding the new message to the outbox")}
+        else{res.json(result);}
+    })
+})
+
+app.post('/load_your_friends_inbox', function(req, res){
+    User.findOne({_id: req.body.your_friends_id}, function(err, result){
+        if(err){console.log("there was an error adding the new message to the outbox")}
+        else{res.json(result);}
+    })
+})
+
+app.post('/delete_Trip', function(req, res){
+    Trip.remove({_id: req.body.trip_id}, function(err, result){
+        if(err){console.log("there was an error")}
+        else{res.json(true);}
+    })
+})
+
+
 
 var server = app.listen(8000, function() {
     console.log("listening on port 8000");

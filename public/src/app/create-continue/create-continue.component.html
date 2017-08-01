@@ -1,13 +1,11 @@
-<h1>Welcome {{name}}</h1>
-<p>user id: {{user_id}}</p>
-<p>new_trip_obj: {{new_trip_obj | json}}</p>
+<app-nav-bar></app-nav-bar>
 
-<p>TRIP ARRAY: {{selected_users_trips | json}}</p>
+<h1>Welcome {{name}}</h1>
 
 <div class="jumbotron">
   <h1>New Trip?</h1>
   <form>
-    <input type="text" name="trip_name" [(ngModel)]="new_trip_obj.trip_name">
+    Trip Name: <input type="text" name="trip_name" [(ngModel)]="new_trip_obj.trip_name" placeholder="Trip Around Europe">
   </form>
   <p>
     <a class="btn btn-lg btn-primary" role="button" (click)="addedNewTrip()">Lets GO! &raquo;</a>
@@ -18,9 +16,11 @@
     <p class="red">{{error}}</p>
   </div>
 
-<div class="jumbotron">
+
+<div class="jumbotron" *ngIf="selected_users_trips.length > 0">
   <h1>Continue Trip:</h1>
   <p *ngFor="let trip of selected_users_trips">
     <a class="btn btn-lg btn-primary" role="button" (click)="continueTrip(trip._id)">{{trip.trip_name}} &raquo;</a>
+    <a class="btn btn-lg btn-warning" role="button" (click)="deleteTrip(trip._id)">Delete &raquo;</a>
   </p>
 </div>

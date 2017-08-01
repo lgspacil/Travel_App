@@ -29,16 +29,25 @@ export class AddInfoComponent implements OnInit {
   }
 
   submitUpdatedChanges(){
-    this._httpService.updateMarkerInfo(this.updateMarker)
-    .then((data) =>{
-      console.log("this is the updated info: ", data)
-      this.submitChangesClicked.emit(false);
+    this._httpService.getWeather(this.updateMarker.location_name)
+      .then((data) =>{
+        console.log("In the city of: ", data.name, " has a temp of: ", data.main.temp)
+        this.updateMarker.weather = data.main.temp;
 
-    })
-    .catch((err) =>{
-      console.log("yeah.... that didnt work.....")
-    })
-  
+        this._httpService.updateMarkerInfo(this.updateMarker)
+          .then((data) =>{
+            console.log("this is the updated info: ", data)
+          
+            this.submitChangesClicked.emit(false);
+
+          })
+          .catch((err) =>{
+            console.log("yeah.... that didnt work.....")
+          })
+      })
+      .catch((err) =>{
+        console.log("unable to get weather from API");
+      })
   }
 
   closeAddInfoPage(){

@@ -9,13 +9,17 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MapComponent } from './map/map.component';
 import { CreateContinueComponent } from './create-continue/create-continue.component';
-import { CookieService } from "angular2-cookie/services/cookies.service";
+import { CookieService, CookieOptions } from 'angular2-cookie/core';
 import { HttpService } from "app/http.service";
 import { HttpModule } from '@angular/http';
 import { ViewInfoComponent } from './map/view-info/view-info.component';
 import { AddInfoComponent } from './map/add-info/add-info.component';
 import { UsersTripsComponent } from './users-trips/users-trips.component';
-import { ChatRoomComponent } from './chat-room/chat-room.component';
+import { WeatherComponent } from './weather/weather.component';
+import { DirectMesssageComponent } from './direct-messsage/direct-messsage.component';
+import { ChatBoxComponent } from './direct-messsage/chat-box/chat-box.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
     ViewInfoComponent,
     AddInfoComponent,
     UsersTripsComponent,
-    ChatRoomComponent,
+    WeatherComponent,
+    DirectMesssageComponent,
+    ChatBoxComponent,
+    NavBarComponent,
+    
   ],
   imports: [
     HttpModule,
@@ -40,7 +48,7 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
       apiKey: 'AIzaSyD9QqT__lEB5kzYAlfK6HpQEtgOAVijZyk'
     })
   ],
-  providers: [HttpService, CookieService],
+  providers: [HttpService, CookieService, { provide: CookieOptions, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,24 @@
+
+<div>
+  <div class="direct-message">
+
+
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of allUsers">
+          <td *ngIf="user_id != user._id"><h6>{{ user.username }}</h6></td>
+          <td *ngIf="user_id != user._id"><button class="btn btn-success" (click)="startAChat(user._id)">Chat With {{user.username}}</button></td>
+        </tr>
+        
+      </tbody>
+    </table> 
+
+  </div>
+</div>
+
+<app-chat-box [displayUserId]="info_for_child_to_display" *ngIf="showChatBox == true"></app-chat-box>

@@ -1,0 +1,14 @@
+<h3>Chat Room</h3>
+
+Your:{{yourObj|json}}
+Your Friends:{{yourFriendsObj|json}}
+
+<div class="well" *ngFor="let message of message_convo">
+  <p>{{message}}</p>
+</div>
+
+<div class="form-group">
+  <label class="control-label" for="inputDefault">Default input</label>
+  <input type="text" class="form-control" id="inputDefault" name="inbox" [(ngModel)]="yourFriendsObj.inbox">
+  <input type="button" (click)="messageSent()" value="Send!">
+</div>
