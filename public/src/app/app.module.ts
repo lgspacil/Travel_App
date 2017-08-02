@@ -16,9 +16,8 @@ import { ViewInfoComponent } from './map/view-info/view-info.component';
 import { AddInfoComponent } from './map/add-info/add-info.component';
 import { UsersTripsComponent } from './users-trips/users-trips.component';
 import { WeatherComponent } from './weather/weather.component';
-import { DirectMesssageComponent } from './direct-messsage/direct-messsage.component';
-import { ChatBoxComponent } from './direct-messsage/chat-box/chat-box.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -33,9 +32,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     AddInfoComponent,
     UsersTripsComponent,
     WeatherComponent,
-    DirectMesssageComponent,
-    ChatBoxComponent,
     NavBarComponent,
+    ChatComponent,
     
   ],
   imports: [

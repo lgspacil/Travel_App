@@ -5,7 +5,7 @@
 <div class="jumbotron">
   <h1>New Trip?</h1>
   <form>
-    Trip Name: <input type="text" name="trip_name" [(ngModel)]="new_trip_obj.trip_name" placeholder="Trip Around Europe">
+    Trip Name: <input class="input" type="text" name="trip_name" [(ngModel)]="new_trip_obj.trip_name" placeholder="Trip Around Europe">
   </form>
   <p>
     <a class="btn btn-lg btn-primary" role="button" (click)="addedNewTrip()">Lets GO! &raquo;</a>
@@ -17,6 +17,7 @@
   </div>
 
 
+
 <div class="jumbotron" *ngIf="selected_users_trips.length > 0">
   <h1>Continue Trip:</h1>
   <p *ngFor="let trip of selected_users_trips">
@@ -24,3 +25,4 @@
     <a class="btn btn-lg btn-warning" role="button" (click)="deleteTrip(trip._id)">Delete &raquo;</a>
   </p>
 </div>
+

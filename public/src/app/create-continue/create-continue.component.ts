@@ -48,22 +48,27 @@ export class CreateContinueComponent implements OnInit {
   }
 
   addedNewTrip(){
-    this._httpService.addedNewTrip(this.new_trip_obj)
+    if(this.new_trip_obj.trip_name.length <= 2){
+      this.error = "your trip name must be greater than 2 characters long"
+    }else{
+      this._httpService.addedNewTrip(this.new_trip_obj)
 
-    .then((data) => {
-      if(data == false){
-        this.error = "you already have a trip in that name.."
-      } else{
-        console.log("this is a new trip()()()()()(): ", data)
-        this._cookieService.put('trip_id', data._id);
+        .then((data) => {
+          if(data == false){
+            this.error = "you already have a trip in that name.."
+          } else{
+            console.log("this is a new trip()()()()()(): ", data)
+            this._cookieService.put('trip_id', data._id);
 
-        this._router.navigate(['/map']);
+            this._router.navigate(['/map']);
+          }
+        })
+        .catch((err) =>{
+          console.log("got an error when adding a new trip");
+          
+        })
       }
-    })
-    .catch((err) =>{
-      console.log("got an error when adding a new trip");
-      
-    })
+
   }
 
   continueTrip(trip_id){

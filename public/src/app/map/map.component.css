@@ -9,3 +9,7 @@ agm-map {
 #maker_location_name{
   color: brown;
 }
+
+.trip_info{
+  background-color: rgba(66, 93, 129, .47);
+}

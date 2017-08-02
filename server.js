@@ -7,6 +7,8 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/main_travel_app');
 
 var app = express();
+let http = require('http').Server(app);
+let io = require('socket.io')(http);
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -254,8 +256,29 @@ app.post('/delete_Trip', function(req, res){
     })
 })
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////socket stuff/////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+io.on('connection', (socket) => {
+  console.log('USER CONNECTED');
+  socket.on('connect', function(){})
 
 
-var server = app.listen(8000, function() {
-    console.log("listening on port 8000");
-})
+  socket.on('disconnect', function(){
+    console.log('USER DISCONNECTED');
+  });
+
+  socket.on('add-message', (message) => {
+    //   console.log("*******************%%%%%%%%%%%", message)
+    io.emit('message', {text: message.new_message, name: message.my_name});
+  });
+});
+
+http.listen(8000, () => {
+  console.log('started on port 8080');
+});
+

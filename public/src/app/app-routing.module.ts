@@ -6,7 +6,8 @@ import { CreateContinueComponent } from "app/create-continue/create-continue.com
 import { MapComponent } from "app/map/map.component";
 import { UsersTripsComponent } from "app/users-trips/users-trips.component";
 import { WeatherComponent } from "app/weather/weather.component";
-import { DirectMesssageComponent } from "app/direct-messsage/direct-messsage.component";
+import { ChatComponent } from "app/chat/chat.component";
+
 
 
 const routes: Routes = [
@@ -17,7 +18,10 @@ const routes: Routes = [
   { path: 'map', component: MapComponent},
   {path: 'all_trips', component: UsersTripsComponent},
   {path: 'weather', component: WeatherComponent},
-  {path: 'directmessage', component: DirectMesssageComponent},
+  {path: 'directmessage', component: ChatComponent},
+  // {path: 'logout', component: LoginComponent},
+
+  
   
   
 

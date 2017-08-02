@@ -3,11 +3,12 @@
 
 <h1 id="trip_name">{{trip_name}}</h1>
 <div class="container">
-  <p>user_id: {{user_id}}____________ trip_id{{trip_id}}_______________the creator of the trip users id{{the_trips_user_id}}</p>
 
+  <div class="trip_info">
     <h1 style="text-align:left;float:left;">Welcome, {{name}}</h1> 
     <h3 style="text-align:right;float:right;">Day Count: {{display_obj.day_count}}| Total Cost: ${{display_obj.money_count}}</h3> 
     <hr style="clear:both;"/>
+  </div>
 
   <div class="map">
     <agm-map 
