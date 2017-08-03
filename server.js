@@ -22,8 +22,6 @@ var UserSchema = new mongoose.Schema({
     password: {type: String},
     confirm_password: {type: String},
     _trip_id: [{type: Schema.Types.ObjectId, ref:'Trip'}],
-    direct_message_inbox: [{type: String}],
-    direct_message_outbox: [{type: String}]
 })
 
 var TripSchema = new mongoose.Schema({
@@ -227,27 +225,6 @@ app.get('/loadAllUsers', function(req, res){
     })
 })
 
-app.post('/messageSent', function(req, res){
-    console.log("I am sending the message: ", req.body);
-    User.update({_id: req.body.yourFriendsId}, {$set: {"direct_message_inbox": req.body.inbox}}, function(err, result){
-        if(err){console.log("there was an error adding the new message to the outbox")}
-        else{res.json(result);}
-    })
-})
-
-app.post('/load_your_inbox', function(req, res){
-    User.findOne({_id: req.body.your_id}, function(err, result){
-        if(err){console.log("there was an error adding the new message to the outbox")}
-        else{res.json(result);}
-    })
-})
-
-app.post('/load_your_friends_inbox', function(req, res){
-    User.findOne({_id: req.body.your_friends_id}, function(err, result){
-        if(err){console.log("there was an error adding the new message to the outbox")}
-        else{res.json(result);}
-    })
-})
 
 app.post('/delete_Trip', function(req, res){
     Trip.remove({_id: req.body.trip_id}, function(err, result){
@@ -255,6 +232,19 @@ app.post('/delete_Trip', function(req, res){
         else{res.json(true);}
     })
 })
+
+
+
+
+app.post('/filter_trips', function(req, res){
+    Trip.find({$and:[{day_count:{$lte:req.body.trip_length}}, {money_count:{$lte:req.body.trip_price}}]}, function(err, result){
+      if(err){console.log("there was an error")}
+      else{res.json(result);}  
+    })
+})
+
+// Trip.findOne({ $and: [{trip_name: req.body.trip_name}, {_user_id: req.body._user_id}]}, function(err, result){
+//db.students.find({$and:[{lucky_number:{$lte:9}}, {lucky_number:{$gte:1}}]})
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

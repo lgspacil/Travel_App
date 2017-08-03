@@ -87,4 +87,8 @@ export class HttpService {
     return this._http.post("/delete_Trip", {trip_id: trip_id}).map(data =>data.json()).toPromise()    
   }
 
+  filterTrips(filter_obj){
+    return this._http.post("/filter_trips", filter_obj).map(data =>data.json()).toPromise()    
+  }
+
 }

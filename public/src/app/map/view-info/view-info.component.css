@@ -1,6 +1,7 @@
 .info_div{
     width: 50%;
     margin: 0 auto;
+    
 }
 
 .title{
@@ -12,4 +13,8 @@
     display: inline-block;
     vertical-align: top;
     margin-left: 45%;
+}
+
+.well-lg{
+    background: rgba(23, 24, 24, 0.61)
 }

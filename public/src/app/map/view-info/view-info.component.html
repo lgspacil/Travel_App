@@ -7,18 +7,19 @@
       <h3 style="text-align:right;float:right;">${{displayMarkerInfo.price}}</h3> 
       <hr style="clear:both;"/>
 
-      <h3>{{displayMarkerInfo.weather}}</h3>
+      <h3>{{displayMarkerInfo.weather}} degrees fahrenheit</h3>
 
 
-      <h4 class="text-info">Day Number: {{displayMarkerInfo.day_number}}</h4>
+      <h4>Day Number: {{displayMarkerInfo.day_number}}</h4>
       <h4>{{displayMarkerInfo.content}}</h4>
 
 
-       <div class="image-selection">
+        <div class="image-selection">
         <img class="mySlides" src={{displayMarkerInfo.images[0]}}  style="width:100%">
         <img class="mySlides" src={{displayMarkerInfo.images[1]}}  style="width:100%">
         <img class="mySlides" src={{displayMarkerInfo.images[2]}}  style="width:100%">
-      </div>
+      </div> 
+
 
     </div>
 

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+// import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @Component({
   selector: 'app-view-info',

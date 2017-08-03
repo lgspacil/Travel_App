@@ -21,6 +21,8 @@ import { ChatComponent } from './chat/chat.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,6 @@ import { ChatComponent } from './chat/chat.component';
     WeatherComponent,
     NavBarComponent,
     ChatComponent,
-    
   ],
   imports: [
     HttpModule,
@@ -44,7 +45,7 @@ import { ChatComponent } from './chat/chat.component';
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD9QqT__lEB5kzYAlfK6HpQEtgOAVijZyk'
-    })
+    }),
   ],
   providers: [HttpService, CookieService, { provide: CookieOptions, useValue: {} }],
   bootstrap: [AppComponent]

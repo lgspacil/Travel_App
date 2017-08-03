@@ -15,9 +15,15 @@
     "angular2-cookie": "^1.2.6",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "jquery": "^3.2.1",
     "mongoose": "^4.11.4",
     "ng-socket-io": "^0.1.10",
+    "ng2-carouselamos": "^2.4.4",
     "ng2-socket-io": "^0.1.7",
+    "ngx-bootstrap": "^1.8.1",
     "socket.io": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.2.10"
   }
 }

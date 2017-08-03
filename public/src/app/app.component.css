@@ -1,9 +1,11 @@
 #wrapper{
     width: 100%;
-    height: 850px;
+    height: 2530px; 
     /* background-image: url('http://www.picturesforwalls.com/wallpapers/SDIM0236.jpg'); */
-    background-size: cover;
+    background-size: cover; 
     background-position: 50% 50%;
     color: white;
     /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+    /* background-repeat: repeat-y; */
+    background-attachment: fixed;
 }

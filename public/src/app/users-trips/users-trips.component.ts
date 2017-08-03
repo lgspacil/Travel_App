@@ -14,6 +14,13 @@ export class UsersTripsComponent implements OnInit {
 
   users_trips = null;
 
+  errors = ''
+
+  filter_obj = {
+    trip_length: '',
+    trip_price: ''
+  }
+
   ngOnInit() {
     this.loadAllTrips()
   }
@@ -37,6 +44,26 @@ export class UsersTripsComponent implements OnInit {
     
     this._cookieService.put('trip_id', trip_id);
     this._router.navigate(['/map']);
+  }
+
+  filterTrips(){
+    if(this.filter_obj.trip_length == '' || this.filter_obj.trip_price == ''){
+      this.errors = "You must have both parameters filled out"
+    }
+    else{
+      this._httpService.filterTrips(this.filter_obj)
+
+      .then((data) =>{
+        console.log("got back this info ", data);
+        this.users_trips = data;
+        this.filter_obj.trip_length = '';
+        this.filter_obj.trip_price = '';
+        this.errors = '';
+      })
+      .catch((err) =>{console.log("error getting filtered items");
+      })
+    }
+
   }
 
 }
