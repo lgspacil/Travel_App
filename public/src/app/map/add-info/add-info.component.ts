@@ -22,6 +22,11 @@ export class AddInfoComponent implements OnInit {
   //the markers on the page
   markers = [];
 
+  weather={
+    city_name : ""
+  }
+
+  errors = ""
 
   constructor(private _httpService: HttpService, private _cookieService:CookieService) { }
 
@@ -29,7 +34,10 @@ export class AddInfoComponent implements OnInit {
   }
 
   submitUpdatedChanges(){
-    this._httpService.getWeather(this.updateMarker.location_name)
+    if (this.weather.city_name == ""){
+      this.errors = "You must enter a city name"
+    }else{
+      this._httpService.getWeather(this.weather.city_name)
       .then((data) =>{
         console.log("In the city of: ", data.name, " has a temp of: ", data.main.temp)
         this.updateMarker.weather = data.main.temp;
@@ -39,6 +47,7 @@ export class AddInfoComponent implements OnInit {
             console.log("this is the updated info: ", data)
           
             this.submitChangesClicked.emit(false);
+            this.errors = "";
 
           })
           .catch((err) =>{
@@ -48,6 +57,8 @@ export class AddInfoComponent implements OnInit {
       .catch((err) =>{
         console.log("unable to get weather from API");
       })
+    }
+    
   }
 
   closeAddInfoPage(){

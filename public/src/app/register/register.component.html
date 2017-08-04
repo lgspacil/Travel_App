@@ -80,6 +80,29 @@
        <div class="red" *ngIf='user_obj.confirm_password != user_obj.password && (confirm_password.touched)'>
         <p>The passwords do not match!</p>
       </div>
+
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-1 control-label">Two Letter Country Code (ISO "ALPHA-2 Code")</label>
+          <div class="col-lg-10">
+            <input 
+            type="text" 
+            class="form-control" 
+            name="country" 
+            required
+            maxlength="2" 
+            minlength="2"
+            placeholder="US" 
+            [(ngModel)]="user_obj.country"
+            #country = 'ngModel'>
+        </div>
+      </div>
+      
+
+       <div class="red" *ngIf='country.errors && (country.touched)'>
+        <p *ngIf='country.errors.required'>Country Code is required</p>
+        <p *ngIf='country.errors.minlength'>Country Code must contain 2 characters.</p>
+        <p *ngIf='country.errors.maxlength'>Country Code must contain 2 characters.</p>
+      </div>
       
       <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">

@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
             console.log("success for logging in! ", data);
             this._cookieService.put('user_name', data.username);
             this._cookieService.put('user_id', data._id);
+            this._cookieService.put('country_code', data.country)
 
             this._router.navigate(['/create_continue']);
         }else{

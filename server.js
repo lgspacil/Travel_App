@@ -22,6 +22,7 @@ var UserSchema = new mongoose.Schema({
     password: {type: String},
     confirm_password: {type: String},
     _trip_id: [{type: Schema.Types.ObjectId, ref:'Trip'}],
+    country: {type: String}
 })
 
 var TripSchema = new mongoose.Schema({
@@ -50,11 +51,6 @@ var LocationSchema = new mongoose.Schema({
     day_number: {type: Number},
     weather: {type: Number}
 }, {timestamps: true});
-
-// var DirectMesssage = new mongoose.Schema({
-//     _user: {type: Schema.Types.ObjectId, ref:"User"},
-//     content: [{type: String}]
-// })
 
 
 mongoose.model('Location', LocationSchema);
@@ -248,7 +244,6 @@ app.post('/filter_trips', function(req, res){
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////socket stuff/////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -263,8 +258,8 @@ io.on('connection', (socket) => {
   });
 
   socket.on('add-message', (message) => {
-    //   console.log("*******************%%%%%%%%%%%", message)
-    io.emit('message', {text: message.new_message, name: message.my_name});
+      console.log("*******************%%%%%%%%%%%", message)
+    io.emit('message', {text: message.new_message, name: message.my_name, country: message.my_country});
   });
 });
 

@@ -109,8 +109,9 @@ export class MapComponent implements OnInit {
 
       //if no marker was placed start in the bay area else, start at the markers last placed position
       if (this.markers.length == 0){
-        this.latitude = 37.7749295;
-        this.longitude = -122.4194155;
+        this.latitude = 32.898504;
+        this.longitude = -36.4194155;
+        this.zoom =2;
       }else{
         this.latitude = this.markers[this.markers.length -1].latitude;
         this.longitude = this.markers[this.markers.length -1].longitude;

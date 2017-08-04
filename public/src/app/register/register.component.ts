@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
     email: "",
     password: "",
     confirm_password: "",
+    country: ""
   }
 
   errors = "";
@@ -25,7 +26,6 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(){
-    console.log("hello dip shit")
     this._httpService.registerUser(this.user_obj)
 
     .then((data) =>{
@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
         console.log("success posted to the DB: now adding to our cookies");
         this._cookieService.put('user_name', data.username);
         this._cookieService.put('user_id', data._id);
+        this._cookieService.put('country_code', data.country)
 
         this._router.navigate(['/create_continue']);
       }

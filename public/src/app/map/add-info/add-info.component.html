@@ -6,8 +6,19 @@
       <div class="form-group">
         <label for="location_name" class="col-lg-2 control-label">Location Name</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" placeholder="Paris" name="location_name" [(ngModel)]="updateMarker.location_name">
+          <input type="text" class="form-control" placeholder="Coffee Shop/Paris" name="location_name" [(ngModel)]="updateMarker.location_name">
         </div>
+      </div>
+
+      <div class="form-group">
+        <label for="city_name" class="col-lg-2 control-label">City Name for Weather</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" placeholder="Berlin" name="city_name" [(ngModel)]="weather.city_name">
+        </div>
+      </div>
+
+       <div *ngIf="errors">
+        <h5 class="red">{{errors}}</h5>
       </div>
       
 
