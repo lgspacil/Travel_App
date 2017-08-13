@@ -15,7 +15,6 @@ import { HttpModule } from '@angular/http';
 import { ViewInfoComponent } from './map/view-info/view-info.component';
 import { AddInfoComponent } from './map/add-info/add-info.component';
 import { UsersTripsComponent } from './users-trips/users-trips.component';
-import { WeatherComponent } from './weather/weather.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ChatComponent } from './chat/chat.component';
 
@@ -33,7 +32,6 @@ import { ChatComponent } from './chat/chat.component';
     ViewInfoComponent,
     AddInfoComponent,
     UsersTripsComponent,
-    WeatherComponent,
     NavBarComponent,
     ChatComponent,
   ],
