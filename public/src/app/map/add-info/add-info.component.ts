@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { HttpService } from "app/http.service";
 import { CookieService } from "angular2-cookie/services/cookies.service";
 
@@ -8,6 +8,9 @@ import { CookieService } from "angular2-cookie/services/cookies.service";
   styleUrls: ['./add-info.component.css']
 })
 export class AddInfoComponent implements OnInit {
+  //this is when I tried to have a pop up window
+  // @ViewChild('openModal') openModal:ElementRef;
+
   @Input() updateMarker;
   @Output() submitChangesClicked = new EventEmitter();
   @Output() closeAddPage = new EventEmitter();
@@ -32,6 +35,12 @@ export class AddInfoComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  //when I had a pop up window to display the addInfo
+  // openWindow(){
+    // this.openModal.nativeElement.click();
+    // console.log(this.openModal);
+  // }
 
   submitUpdatedChanges(){
     if (this.weather.city_name == ""){
