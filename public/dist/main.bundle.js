@@ -22744,7 +22744,7 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Component */])({
         selector: 'app-root',
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
@@ -22924,7 +22924,7 @@ var ChatComponent = (function () {
     return ChatComponent;
 }());
 ChatComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Component */])({
         selector: 'chat-component',
         template: __webpack_require__("../../../../../src/app/chat/chat.component.html"),
         providers: [__WEBPACK_IMPORTED_MODULE_1__chat_service__["a" /* ChatService */]]
@@ -23099,7 +23099,7 @@ var CreateContinueComponent = (function () {
     return CreateContinueComponent;
 }());
 CreateContinueComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Component */])({
         selector: 'app-create-continue',
         template: __webpack_require__("../../../../../src/app/create-continue/create-continue.component.html"),
         styles: [__webpack_require__("../../../../../src/app/create-continue/create-continue.component.css")]
@@ -23302,7 +23302,7 @@ var LoginComponent = (function () {
     return LoginComponent;
 }());
 LoginComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Component */])({
         selector: 'app-login',
         template: __webpack_require__("../../../../../src/app/login/login.component.html"),
         styles: [__webpack_require__("../../../../../src/app/login/login.component.css")]
@@ -23422,23 +23422,23 @@ __decorate([
     __metadata("design:type", Object)
 ], AddInfoComponent.prototype, "updateMarker", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_1" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Output */])(),
     __metadata("design:type", Object)
 ], AddInfoComponent.prototype, "submitChangesClicked", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_1" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Output */])(),
     __metadata("design:type", Object)
 ], AddInfoComponent.prototype, "closeAddPage", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_1" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Output */])(),
     __metadata("design:type", Object)
 ], AddInfoComponent.prototype, "dayNumber", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_1" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Output */])(),
     __metadata("design:type", Object)
 ], AddInfoComponent.prototype, "currentCost", void 0);
 AddInfoComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Component */])({
         selector: 'app-add-info',
         template: __webpack_require__("../../../../../src/app/map/add-info/add-info.component.html"),
         styles: [__webpack_require__("../../../../../src/app/map/add-info/add-info.component.css")]
@@ -23740,7 +23740,7 @@ var MapComponent = (function () {
     return MapComponent;
 }());
 MapComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Component */])({
         selector: 'app-map',
         template: __webpack_require__("../../../../../src/app/map/map.component.html"),
         styles: [__webpack_require__("../../../../../src/app/map/map.component.css")]
@@ -23811,11 +23811,11 @@ __decorate([
     __metadata("design:type", Object)
 ], ViewInfoComponent.prototype, "displayMarkerInfo", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_1" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Output */])(),
     __metadata("design:type", Object)
 ], ViewInfoComponent.prototype, "xClicked", void 0);
 ViewInfoComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Component */])({
         selector: 'app-view-info',
         template: __webpack_require__("../../../../../src/app/map/view-info/view-info.component.html"),
         styles: [__webpack_require__("../../../../../src/app/map/view-info/view-info.component.css")]
@@ -23876,7 +23876,7 @@ var NavBarComponent = (function () {
     return NavBarComponent;
 }());
 NavBarComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Component */])({
         selector: 'app-nav-bar',
         template: __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.html"),
         styles: [__webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.css")]
@@ -23975,7 +23975,7 @@ var RegisterComponent = (function () {
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Component */])({
         selector: 'app-register',
         template: __webpack_require__("../../../../../src/app/register/register.component.html"),
         styles: [__webpack_require__("../../../../../src/app/register/register.component.css")]
@@ -24090,7 +24090,7 @@ var UsersTripsComponent = (function () {
     return UsersTripsComponent;
 }());
 UsersTripsComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Component */])({
         selector: 'app-users-trips',
         template: __webpack_require__("../../../../../src/app/users-trips/users-trips.component.html"),
         styles: [__webpack_require__("../../../../../src/app/users-trips/users-trips.component.css")]
