@@ -1,5 +1,3 @@
-import { SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG } from 'constants';
-
 //this will pull all the schemas that I have set up in the models folder
 
 var mongoose = require('mongoose');
