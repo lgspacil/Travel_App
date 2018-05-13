@@ -4,8 +4,9 @@ import { AgmCoreModule } from '@agm/core';
 import { FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpService } from "app/http.service";
+import { HttpService } from 'app/http.service';
 import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -18,8 +19,6 @@ import { AddInfoComponent } from './map/add-info/add-info.component';
 import { UsersTripsComponent } from './users-trips/users-trips.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ChatComponent } from './chat/chat.component';
-
-
 
 
 

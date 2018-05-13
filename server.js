@@ -32,6 +32,11 @@ var routes = require('./server/config/routes.js')(app)
 ////////////////////////////////////////////////////////////////////////////////
 
 io.on('connection', (socket) => {
+
+  socket.on("TESTING", function(data){
+    io.emit("TESTING_BACK", data)
+  })
+
   console.log('USER CONNECTED');
   socket.on('connect', function(){})
 

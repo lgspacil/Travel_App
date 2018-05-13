@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ChatService }       from './chat.service';
-import { CookieService } from "angular2-cookie/services";
+import { ChatService } from './chat.service';
+import { CookieService } from 'angular2-cookie/services';
 
 @Component({
   selector: 'chat-component',
@@ -15,30 +15,29 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   passed_obj = {
     my_name: this.name,
-    new_message : "",
+    new_message : '',
     my_country: this.country_code.toLowerCase(),
     longitude: null,
     latitude: null
   }
 
   others_location = null;
-  
 
-  constructor(private chatService: ChatService, private _cookieService:CookieService) { }
+
+  constructor(private chatService: ChatService, private _cookieService: CookieService) { }
 
   ngOnInit() {
 
     this.connection = this.chatService.getMessages().subscribe(message => {
-      console.log("the message here is: ", message)
+      console.log('the message here is: ', message)
       this.others_location = message;
 
       if(Math.abs(this.others_location.latitude - this.passed_obj.latitude) <= .192528 || Math.abs(this.passed_obj.latitude - this.others_location.latitude) <= .192528 && Math.abs(this.others_location.longitude - this.passed_obj.longitude) <= .192528 || Math.abs(this.passed_obj.longitude - this.others_location.longitude) <= .192528){
         this.messages.unshift(message);
       }else{
         console.log("you are not close enough to other people");
-        
       }
- 
+
     })
 
     this.getLocation();
@@ -46,7 +45,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   getLocation() {
      if (navigator.geolocation) {
-       navigator.geolocation.getCurrentPosition((pos)=>this.setPosition(pos))
+       navigator.geolocation.getCurrentPosition((pos) => this.setPosition(pos))
      }
   }
 

@@ -22881,7 +22881,7 @@ var ChatComponent = (function () {
         this.country_code = this._cookieService.get('country_code');
         this.passed_obj = {
             my_name: this.name,
-            new_message: "",
+            new_message: '',
             my_country: this.country_code.toLowerCase(),
             longitude: null,
             latitude: null
@@ -22891,7 +22891,7 @@ var ChatComponent = (function () {
     ChatComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.connection = this.chatService.getMessages().subscribe(function (message) {
-            console.log("the message here is: ", message);
+            console.log('the message here is: ', message);
             _this.others_location = message;
             if (Math.abs(_this.others_location.latitude - _this.passed_obj.latitude) <= .192528 || Math.abs(_this.passed_obj.latitude - _this.others_location.latitude) <= .192528 && Math.abs(_this.others_location.longitude - _this.passed_obj.longitude) <= .192528 || Math.abs(_this.passed_obj.longitude - _this.others_location.longitude) <= .192528) {
                 _this.messages.unshift(message);
@@ -23233,7 +23233,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"form-horizontal\" #logForm='ngForm'>\n    <a style=\"text-align:right;float:right;\" [routerLink]=\"['/register']\">Not A User, Register Here!</a>\n    <fieldset>\n      <legend>Login</legend>\n      <div class=\"form-group\">\n        <label for=\"inputEmail\" class=\"col-lg-1 control-label\">Email</label>\n        <div class=\"col-lg-10\">\n          <input \n          type=\"text\" \n          class=\"form-control\" \n          name=\"email\" \n          placeholder=\"Email\" \n          required \n          minlength=\"6\" \n          [(ngModel)]=\"user_obj.email\" \n          #email=\"ngModel\">\n        </div>\n      </div>\n\n      <div class=\"red\" *ngIf='email.errors && (email.touched)'>\n        <p *ngIf='email.errors.required'>Email is required</p>\n        <p *ngIf='email.errors.minlength'>Email must contain at least 6 characters.</p>\n      </div>\n\n\n      <div class=\"form-group\">\n        <label for=\"inputPassword\" class=\"col-lg-1 control-label\">Password</label>\n        <div class=\"col-lg-10\">\n          <input \n          type=\"password\" \n          class=\"form-control\" \n          name=\"password\" \n          placeholder=\"Password\" \n          required\n          minlength=\"4\"\n          [(ngModel)]=\"user_obj.password\"\n          #password=\"ngModel\">\n        </div>\n      </div>\n\n      <div class=\"red\" *ngIf='password.errors && (password.touched)'>\n        <p *ngIf='password.errors.required'>Password is required</p>\n        <p *ngIf='password.errors.minlength'>Password must be at least 4 characters.</p>\n      </div>\n      \n      <div class=\"form-group\">\n        <div class=\"col-lg-10 col-lg-offset-2\">\n          <button type=\"reset\" class=\"btn btn-default\">Cancel</button>\n          <button [disabled]=\"!logForm.valid\" type=\"submit\" class=\"btn btn-primary\" (click)=\"userLogin()\">Submit</button>\n        </div>\n      </div>\n\n    </fieldset>\n  </form>\n\n  <div *ngIf=\"error\">\n    <p class=\"red\">{{error}}</p>\n  </div>\n"
+module.exports = "<form class=\"form-horizontal\" #logForm='ngForm'>\n    <a style=\"text-align:right;float:right;\" [routerLink]=\"['/register']\">Not A User, Register Here!</a>\n    <fieldset>\n      <legend>Login</legend>\n      <div class=\"form-group\">\n        <label for=\"inputEmail\" class=\"col-lg-1 control-label\">Email</label>\n        <div class=\"col-lg-10\">\n          <input\n          type=\"text\"\n          class=\"form-control\"\n          name=\"email\"\n          placeholder=\"Email\"\n          required\n          minlength=\"6\"\n          [(ngModel)]=\"user_obj.email\"\n          #email=\"ngModel\">\n        </div>\n      </div>\n\n      <div class=\"red\" *ngIf='email.errors && (email.touched)'>\n        <p *ngIf='email?.errors?.required'>Email is required</p>\n        <p *ngIf='email?.errors?.minlength'>Email must contain at least 6 characters.</p>\n      </div>\n\n\n      <div class=\"form-group\">\n        <label for=\"inputPassword\" class=\"col-lg-1 control-label\">Password</label>\n        <div class=\"col-lg-10\">\n          <input\n          type=\"password\"\n          class=\"form-control\"\n          name=\"password\"\n          placeholder=\"Password\"\n          required\n          minlength=\"4\"\n          [(ngModel)]=\"user_obj.password\"\n          #password=\"ngModel\">\n        </div>\n      </div>\n\n      <div class=\"red\" *ngIf='password.errors && (password.touched)'>\n        <p *ngIf='password.errors.required'>Password is required</p>\n        <p *ngIf='password.errors.minlength'>Password must be at least 4 characters.</p>\n      </div>\n\n      <div class=\"form-group\">\n        <div class=\"col-lg-10 col-lg-offset-2\">\n          <button type=\"reset\" class=\"btn btn-default\">Cancel</button>\n          <button [disabled]=\"!logForm.valid\" type=\"submit\" class=\"btn btn-primary\" (click)=\"userLogin()\">Submit</button>\n        </div>\n      </div>\n\n    </fieldset>\n  </form>\n\n  <div *ngIf=\"error\">\n    <p class=\"red\">{{error}}</p>\n  </div>\n"
 
 /***/ }),
 
@@ -23260,6 +23260,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+// import { FormsModule, Validators } from '@angular/forms';
 var LoginComponent = (function () {
     function LoginComponent(_httpService, _cookieService, _router) {
         this._httpService = _httpService;
@@ -23275,28 +23276,28 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.userLogin = function () {
         var _this = this;
-        console.log("user clicked me to login");
+        console.log('user clicked me to login');
         this._httpService.userLogin(this.user_obj)
             .then(function (data) {
-            console.log("data in the login.ts we got back is: ", data);
+            console.log('data in the login.ts we got back is: ', data);
             if (data == null) {
-                _this.error = "You have to register if this is your first time here";
+                _this.error = 'You have to register if this is your first time here';
             }
             else {
                 if (_this.user_obj.password == data.password) {
-                    console.log("success for logging in! ", data);
+                    console.log('success for logging in! ', data);
                     _this._cookieService.put('user_name', data.username);
                     _this._cookieService.put('user_id', data._id);
                     _this._cookieService.put('country_code', data.country);
                     _this._router.navigate(['/create_continue']);
                 }
                 else {
-                    _this.error = "Wrong Password!";
+                    _this.error = 'Wrong Password!';
                 }
             }
         })
             .catch(function (err) {
-            console.log("got an error when trying to login");
+            console.log('got an error when trying to login');
         });
     };
     return LoginComponent;

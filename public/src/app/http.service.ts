@@ -56,13 +56,13 @@ export class HttpService {
   updateMarkerInfo(info_obj){
     return this._http.post("/update_marker", info_obj).map(data =>data.json()).toPromise()
   }
-  
+
   loadAllTrips(){
     return this._http.get("/loadAllTrips").map(data =>data.json()).toPromise()
   }
 
   getWeather(location){
-    return this._http.get("http://api.openweathermap.org/data/2.5/weather?q="+location+"&units=imperial&APPID=bb928725dc4b57216334e06c6fbafa99").map(data => data.json()).toPromise()
+    return this._http.get("https://api.openweathermap.org/data/2.5/weather?q="+location+"&units=imperial&APPID=bb928725dc4b57216334e06c6fbafa99").map(data => data.json()).toPromise()
   }
 
   loadAllUsers(){
@@ -71,24 +71,24 @@ export class HttpService {
 
   messageSent(yourFriendsObj){
     console.log("hello, in the messageSent service", yourFriendsObj)
-    return this._http.post("/messageSent", yourFriendsObj).map(data =>data.json()).toPromise()    
+    return this._http.post("/messageSent", yourFriendsObj).map(data =>data.json()).toPromise()
   }
 
   loadYourUserInfo(your_id){
-    return this._http.post("/load_your_inbox", {your_id: your_id}).map(data =>data.json()).toPromise()    
+    return this._http.post("/load_your_inbox", {your_id: your_id}).map(data =>data.json()).toPromise()
   }
 
    loadYourFriendsInfo(your_friends_id){
-    return this._http.post("/load_your_friends_inbox", {your_friends_id: your_friends_id}).map(data =>data.json()).toPromise()    
+    return this._http.post("/load_your_friends_inbox", {your_friends_id: your_friends_id}).map(data =>data.json()).toPromise()
   }
 
   deleteTrip(trip_id){
     // console.log("the trips is: ", trip_id)
-    return this._http.post("/delete_Trip", {trip_id: trip_id}).map(data =>data.json()).toPromise()    
+    return this._http.post("/delete_Trip", {trip_id: trip_id}).map(data =>data.json()).toPromise()
   }
 
   filterTrips(filter_obj){
-    return this._http.post("/filter_trips", filter_obj).map(data =>data.json()).toPromise()    
+    return this._http.post("/filter_trips", filter_obj).map(data =>data.json()).toPromise()
   }
 
 }
