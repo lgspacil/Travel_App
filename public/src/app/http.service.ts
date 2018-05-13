@@ -46,7 +46,7 @@ export class HttpService {
   }
 
   getLocationName(location){
-    return this._http.get("maps.googleapis.com/maps/api/geocode/json?&address="+location).map(data => data.json()).toPromise()
+    return this._http.get("https://maps.googleapis.com/maps/api/geocode/json?&address="+location).map(data => data.json()).toPromise()
   }
 
   getTripNameAndUserIdFromTripId(trip_id){
@@ -62,7 +62,7 @@ export class HttpService {
   }
 
   getWeather(location){
-    return this._http.get("https://api.openweathermap.org/data/2.5/weather?q="+location+"&units=imperial&APPID=bb928725dc4b57216334e06c6fbafa99").map(data => data.json()).toPromise()
+    return this._http.get("//api.openweathermap.org/data/2.5/weather?q="+location+"&units=imperial&APPID=bb928725dc4b57216334e06c6fbafa99").map(data => data.json()).toPromise()
   }
 
   loadAllUsers(){
