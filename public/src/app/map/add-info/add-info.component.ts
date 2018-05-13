@@ -42,7 +42,7 @@ export class AddInfoComponent implements OnInit {
     // console.log(this.openModal);
   // }
 
-  submitUpdatedChanges(){
+  submitUpdatedChanges() {
     console.log('you said: ', this.weather.city_name)
     if (this.weather.city_name == ''){
       this.errors = 'You must enter a city name'
@@ -53,18 +53,18 @@ export class AddInfoComponent implements OnInit {
         this.updateMarker.weather = data.main.temp;
 
         this._httpService.updateMarkerInfo(this.updateMarker)
-          .then((data) =>{
+          .then((data) => {
             console.log('this is the updated info: ', data)
 
             this.submitChangesClicked.emit(false);
             this.errors = '';
 
           })
-          .catch((err) =>{
+          .catch((err) => {
             console.log('yeah.... that didnt work.....')
           })
       })
-      .catch((err) =>{
+      .catch((err) => {
         console.log('unable to get weather from API');
       })
     }

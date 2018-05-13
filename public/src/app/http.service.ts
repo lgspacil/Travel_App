@@ -62,7 +62,7 @@ export class HttpService {
   }
 
   getWeather(location){
-    return this._http.get("//api.openweathermap.org/data/2.5/weather?q="+location+"&units=imperial&APPID=bb928725dc4b57216334e06c6fbafa99").map(data => data.json()).toPromise()
+    return this._http.get("https://api.openweathermap.org/data/2.5/weather?q="+location+"&units=imperial&APPID=bb928725dc4b57216334e06c6fbafa99").map(data => data.json()).toPromise()
   }
 
   loadAllUsers(){
