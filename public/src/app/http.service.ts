@@ -46,7 +46,7 @@ export class HttpService {
   }
 
   getLocationName(location){
-    return this._http.get("https://maps.googleapis.com/maps/api/geocode/json?&address="+location).map(data => data.json()).toPromise()
+    return this._http.get("maps.googleapis.com/maps/api/geocode/json?&address="+location).map(data => data.json()).toPromise()
   }
 
   getTripNameAndUserIdFromTripId(trip_id){
