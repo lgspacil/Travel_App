@@ -1,7 +1,6 @@
 .add_info{
-    width: 50%;
-    margin-left: 339px;
-    background: rgba(23, 24, 24, 0.61)
+    background: rgba(23, 24, 24, 0.61);
+    margin: auto 0;
 }
 
 .red{
@@ -11,3 +10,5 @@
 .legend-color{
     color: white;
 }
+
+

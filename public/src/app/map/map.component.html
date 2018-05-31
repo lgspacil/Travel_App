@@ -5,15 +5,15 @@
 <div class="container">
 
   <div class="trip_info">
-    <h1 style="text-align:left;float:left;">Welcome, {{name}}</h1> 
-    <h3 style="text-align:right;float:right;">Day Count: {{display_obj.day_count}}| Total Cost: ${{display_obj.money_count}}</h3> 
+    <h1 style="text-align:left;float:left;">Welcome, {{name}}</h1>
+    <h3 style="text-align:right;float:right;">Day Count: {{display_obj.day_count}}| Total Cost: ${{display_obj.money_count}}</h3>
     <hr style="clear:both;"/>
   </div>
 
   <p>Right click the map or generate point below to add a marker.</p>
   <div class="map">
-    <agm-map 
-    [latitude]="latitude" 
+    <agm-map
+    [latitude]="latitude"
     [longitude]="longitude"
     [zoom]="zoom"
     [disableDefaultUI]=false
@@ -22,27 +22,27 @@
 
       <agm-polyline [strokeColor]="'blue'">
         <agm-polyline-point *ngFor="let m of markers; let i = index"
-          [latitude]="m.latitude" 
+          [latitude]="m.latitude"
           [longitude]="m.longitude">
 
           <agm-marker
             [iconUrl]="m.img_url[0]"
             (markerClick)="clickedMarker(m, i)"
-            [latitude]="m.latitude" 
+            [latitude]="m.latitude"
             [longitude]="m.longitude">
 
             <agm-info-window>
               <h4 id="maker_location_name">{{m.location_name}}</h4>
               <button class="btn btn-info" (click)="load_view_info(m)">Learn More</button>
-              <button class="btn btn-success" (click)="load_add_info(m)" *ngIf="user_id == m._user">Add Info</button>
+              <button class="btn btn-success" (click)="load_add_info(m); scroll(target)" *ngIf="user_id == m._user"><a href="#about"></a>Add Info</button>
               <button class="btn btn-danger" (click)="removeMarker(m)" *ngIf="user_id == m._user">Delete</button>
               <h6 class="text-info">Day Number: {{m.day_number}}</h6>
             </agm-info-window>
 
           </agm-marker>
-          
+
         </agm-polyline-point>
-        
+
       </agm-polyline>
     </agm-map>
   </div>
@@ -51,10 +51,11 @@
         Generate Point: <input type="text" [(ngModel)]="markerName" name="markerName" style="color:black">
         <button class="btn btn-primary" (click)="getLocationName()">Map it</button>
     </form>
-    
+
 </div> <!--end of container -->
 
-<app-view-info [displayMarkerInfo]="info_for_child_to_display" (xClicked)="closeInfoPage($event)" *ngIf="info_page == true"></app-view-info>
+<app-view-info [displayMarkerInfo]="info_for_child_to_display" (xClicked)="closeInfoPage($event)" *ngIf="info_page == true" id="add"></app-view-info>
 
-<app-add-info [updateMarker]="add_info_to_marker" (submitChangesClicked)="reloadPage($event)" (closeAddPage)="closeAddPage($event)" *ngIf="add_info_page == true"></app-add-info>
-
+<div #target>
+  <app-add-info [updateMarker]="add_info_to_marker" (submitChangesClicked)="reloadPage($event)" (closeAddPage)="closeAddPage($event)" *ngIf="add_info_page == true"></app-add-info>
+</div>

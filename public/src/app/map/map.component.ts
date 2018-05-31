@@ -14,7 +14,7 @@ export class MapComponent implements OnInit {
   name = this._cookieService.get('user_name');
   user_id = this._cookieService.get('user_id');
   trip_id = this._cookieService.get('trip_id');
-  
+
   //load specific markers with this obj
   trip_user_obj = {
     trip_id: this.trip_id
@@ -31,7 +31,7 @@ export class MapComponent implements OnInit {
   markerName:string = '';
   markerLat:string = '';
   markerLng:string = '';
-  
+
   //zoom level
   zoom: number = 10
 
@@ -48,9 +48,9 @@ export class MapComponent implements OnInit {
     money_count : 0,
     day_count: 0,
     trip_id: this.trip_id
-  } 
+  }
 
-  //parameter to load info page 
+  //parameter to load info page
   info_page = false;
   add_info_page = false;
 
@@ -63,6 +63,11 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.loadSpecificMarkers()
     this.getTripNameAndUserIdFromTripId()
+  }
+
+  scroll(el) {
+    console.log('scroll')
+    el.scrollIntoView(true);
   }
 
   loadSpecificMarkers(){
@@ -79,7 +84,7 @@ export class MapComponent implements OnInit {
       }
 
       // console.log("entering the for loop");
-      
+
       for(var i = 0; i < data._locations.length; i++){
         let newMarker = {'location_name': data._locations[i].location_name,
                              'latitude': data._locations[i].latitude,
@@ -94,7 +99,7 @@ export class MapComponent implements OnInit {
                              '_user': data._locations[i]._user,
                              '_trip': data._locations[i]._trip,
                              'weather': data._locations[i].weather
-                
+
         }
         this.markers.push(newMarker);
 
@@ -116,10 +121,10 @@ export class MapComponent implements OnInit {
         this.latitude = this.markers[this.markers.length -1].latitude;
         this.longitude = this.markers[this.markers.length -1].longitude;
       }
-      
+
       //add the updated informatino about the current days and money count to the DB:
       // console.log("about to enter updateTripInfo... in loadSpecificMarkers:");
-      
+
       this._httpService.updateTripInfo(this.display_obj)
         .then((data) =>{
           // console.log("awesome this new feature worked")
@@ -130,7 +135,7 @@ export class MapComponent implements OnInit {
     })
     .catch((err) =>{
       console.log("failed loading markers");
-      
+
     })
   }
 
@@ -164,13 +169,13 @@ export class MapComponent implements OnInit {
             // moving the map to the location that was just added
             this.latitude = this.markers[this.markers.length -1].latitude;
             this.longitude = this.markers[this.markers.length -1].longitude;
-          }      
+          }
         })
         .catch((err) =>{
-          console.log("unable to post location to the DB");    
+          console.log("unable to post location to the DB");
         })
     }
-      
+
   }
 
   clickedMarker(marker, index:number){
@@ -193,14 +198,14 @@ export class MapComponent implements OnInit {
           })
       })
       .catch((err) =>{
-        console.log("unable to reload the locations");  
+        console.log("unable to reload the locations");
       })
-    
+
   }
 
   //using the input tag to look up a marker point using the google api
   getLocationName(){
-    
+
     this._httpService.getLocationName(this.markerName)
     .then((data) =>{
       // console.log("this is the data that came back: ", data.results[0].geometry.location)
@@ -234,11 +239,11 @@ export class MapComponent implements OnInit {
             this.latitude = this.markers[this.markers.length -1].latitude;
             this.longitude = this.markers[this.markers.length -1].longitude;
           }
-          
+
         })
         .catch((err) =>{
           console.log("unable to post location to the DB");
-          
+
         })
 
     })
@@ -266,7 +271,7 @@ export class MapComponent implements OnInit {
 
   getTripNameAndUserIdFromTripId(){
     // console.log("hey I am getting the trip name");
-    
+
     this._httpService.getTripNameAndUserIdFromTripId(this.trip_id)
 
     .then((data) =>{
@@ -302,5 +307,5 @@ export class MapComponent implements OnInit {
   }
 
 
-  
+
 }
