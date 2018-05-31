@@ -33,7 +33,7 @@
 
             <agm-info-window>
               <h4 id="maker_location_name">{{m.location_name}}</h4>
-              <button class="btn btn-info" (click)="load_view_info(m)">Learn More</button>
+              <button class="btn btn-info" (click)="load_view_info(m); scroll(view)">Learn More</button>
               <button class="btn btn-success" (click)="load_add_info(m); scroll(target)" *ngIf="user_id == m._user"><a href="#about"></a>Add Info</button>
               <button class="btn btn-danger" (click)="removeMarker(m)" *ngIf="user_id == m._user">Delete</button>
               <h6 class="text-info">Day Number: {{m.day_number}}</h6>
@@ -54,8 +54,9 @@
 
 </div> <!--end of container -->
 
-<app-view-info [displayMarkerInfo]="info_for_child_to_display" (xClicked)="closeInfoPage($event)" *ngIf="info_page == true" id="add"></app-view-info>
-
+<div #view>
+  <app-view-info [displayMarkerInfo]="info_for_child_to_display" (xClicked)="closeInfoPage($event)" *ngIf="info_page == true" id="add"></app-view-info>
+</div>
 <div #target>
   <app-add-info [updateMarker]="add_info_to_marker" (submitChangesClicked)="reloadPage($event)" (closeAddPage)="closeAddPage($event)" *ngIf="add_info_page == true"></app-add-info>
 </div>
